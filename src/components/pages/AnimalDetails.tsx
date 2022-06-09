@@ -1,21 +1,49 @@
-import React from "react";
-
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import {
+  defaultValue,
+  AnimalInterface,
+  AnimalContext,
+} from "../../contexts/AnimalContext";
 import { IAnimals } from "../../models/IAnimals";
 
-interface IAnimalDetailsProps {
-  animal: IAnimals;
-  feed(id: number): void;
-}
+export const AnimalDetails = () => {
+  const animal = useContext(AnimalContext);
 
-export const AnimalDetails = (props: IAnimalDetailsProps) => {
+  const [singleAnimal, setSingleAnimal] = useState<IAnimals>({
+    id: 0,
+    name: "",
+    imageUrl: "",
+    yearOfBirth: 0,
+    shortDescription: "",
+    longDescription: "",
+    isFed: false,
+    lastFed: "",
+  });
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id) {
+      for (let i = 0; i < animal.animals.length; i++) {
+        if (animal.animals[i].id === parseInt(params.id)) {
+          setSingleAnimal(animal.animals[i]);
+        }
+      }
+    }
+  }, []);
+
   return (
     <div>
       <Link to="/">back to all animals</Link>
-      <h1>{props.animal.name}</h1>
-      <img src={props.animal.imageUrl} alt="" />
-      <p>{props.animal.yearOfBirth}</p>
-      <p>{props.animal.shortDescription}</p>
+      <p>Namn: {singleAnimal.name}</p>
+      <p>Född år: {singleAnimal.yearOfBirth}</p>
+      <img src={singleAnimal.imageUrl} alt={singleAnimal.name} />
+      <p>Om Frille: {singleAnimal.shortDescription}</p>
+      <p>Om rasen: {singleAnimal.longDescription}</p>
+      <button onClick={() => animal.feedAnimal(singleAnimal.id)}>
+        Mata {singleAnimal.name}
+      </button>
     </div>
   );
 };

@@ -11,16 +11,13 @@ export const Animals = () => {
     <div>
       {animals.animals.map((animal) => {
         return (
-          <>
-            <Link to={"/" + animal.id} key={animal.id}>
-              <div>
-                <p>{animal.name}</p>
-                <img src={animal.imageUrl} alt={animal.name} />
-                <p>{animal.shortDescription}</p>
-              </div>
-            </Link>
-            <AnimalDetails animal={animal} feed={animals.feedAnimal} />
-          </>
+          <Link to={"/" + animal.id} key={animal.id}>
+            <div>
+              <p>{animal.name}</p>
+              <img src={animal.imageUrl} alt={animal.name} />
+              <p>{animal.shortDescription}</p>
+            </div>
+          </Link>
         );
       })}
     </div>

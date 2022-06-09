@@ -4,6 +4,7 @@ export interface IAnimals {
   imageUrl: string;
   yearOfBirth: number;
   shortDescription: string;
+  longDescription: string;
   isFed: boolean;
   lastFed: string;
 }
