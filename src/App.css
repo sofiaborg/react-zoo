@@ -1,0 +1,9 @@
+* {
+  margin: 0px;
+}
+
+#root {
+  background-color: rgba(62, 76, 70, 0.581);
+  margin: 0px;
+  width: 100%;
+}

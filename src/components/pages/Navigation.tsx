@@ -1,9 +1,10 @@
 import React from "react";
+import { NavigationWrapper } from "../styledComponents/StyledWrappers";
 
 export const Navigation = () => {
   return (
-    <div>
-      <h1>ZOO GAME</h1>
-    </div>
+    <NavigationWrapper>
+      <h1>ZOO</h1>
+    </NavigationWrapper>
   );
 };
