@@ -39,7 +39,7 @@ export const App = () => {
     animals[animals.findIndex((a) => a.id === id)].isFed = true;
 
     animals[animals.findIndex((a) => a.id === id)].lastFed =
-      Date.now().toString();
+      Date.now.toString();
 
     setAnimalsState({ ...animalsState, animals: animals });
     localStorage.setItem(LS_KEY, JSON.stringify(animals));

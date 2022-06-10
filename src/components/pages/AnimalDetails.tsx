@@ -35,7 +35,7 @@ export const AnimalDetails = () => {
 
   return (
     <div>
-      <Link to="/">back to all animals</Link>
+      <Link to="/">Tillbaka till alla djur</Link>
       <p>Namn: {singleAnimal.name}</p>
       <p>Född år: {singleAnimal.yearOfBirth}</p>
       <img src={singleAnimal.imageUrl} alt={singleAnimal.name} />
@@ -44,6 +44,9 @@ export const AnimalDetails = () => {
       <button onClick={() => animal.feedAnimal(singleAnimal.id)}>
         Mata {singleAnimal.name}
       </button>
+      <p>
+        {singleAnimal.name} matades senast {singleAnimal.lastFed}
+      </p>
     </div>
   );
 };
