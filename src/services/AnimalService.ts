@@ -1,1 +1,2 @@
-export const LS_KEY = "animals";
+export const LS_animals = "animals";
+export const LS_animal = "animal";

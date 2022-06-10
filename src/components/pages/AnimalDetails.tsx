@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {
-  defaultValue,
-  AnimalInterface,
-  AnimalContext,
-} from "../../contexts/AnimalContext";
+import { AnimalContext } from "../../contexts/AnimalContext";
 import { IAnimals } from "../../models/IAnimals";
+import { LS_animal } from "../../services/AnimalService";
 
 export const AnimalDetails = () => {
   const animal = useContext(AnimalContext);
@@ -28,6 +25,7 @@ export const AnimalDetails = () => {
       for (let i = 0; i < animal.animals.length; i++) {
         if (animal.animals[i].id === parseInt(params.id)) {
           setSingleAnimal(animal.animals[i]);
+          localStorage.setItem(LS_animal, JSON.stringify(singleAnimal));
         }
       }
     }
@@ -41,10 +39,15 @@ export const AnimalDetails = () => {
       <img src={singleAnimal.imageUrl} alt={singleAnimal.name} />
       <p>Om Frille: {singleAnimal.shortDescription}</p>
       <p>Om rasen: {singleAnimal.longDescription}</p>
-      <button onClick={() => animal.feedAnimal(singleAnimal.id)}>
+      <button
+        onClick={() => animal.feedAnimal(singleAnimal.id)}
+        disabled={singleAnimal.isFed}
+      >
         Mata {singleAnimal.name}
       </button>
-      <p>{singleAnimal.lastFed}</p>
+      <p>
+        {singleAnimal.name} fick sin mat {singleAnimal.lastFed}
+      </p>
     </div>
   );
 };
