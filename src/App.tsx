@@ -32,12 +32,14 @@ export const App = () => {
     localStorage.setItem(LS_KEY, JSON.stringify(animalsState));
   }, [animalsState]);
 
-  //toggla booleanvariabeln "isFed" mellan true och false
+  //hantera "mata"-knappen: uppdaterar isFed till TRUE samt lastFed till TID
   animalsState.feedAnimal = (id: number) => {
     let animals = [...animalsState.animals];
 
-    animals[animals.findIndex((a) => a.id === id)].isFed =
-      !animals[animals.findIndex((a) => a.id === id)].isFed;
+    animals[animals.findIndex((a) => a.id === id)].isFed = true;
+
+    animals[animals.findIndex((a) => a.id === id)].lastFed =
+      Date.now().toString();
 
     setAnimalsState({ ...animalsState, animals: animals });
     localStorage.setItem(LS_KEY, JSON.stringify(animals));
