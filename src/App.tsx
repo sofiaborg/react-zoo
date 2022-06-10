@@ -34,10 +34,7 @@ export const App = () => {
     localStorage.setItem(LS_animals, JSON.stringify(animalsState));
   }, [animalsState]);
 
-  //MATA-KNAPPEN-FUNKTIONALITET
-  //uppdaterar isFed till TRUE
-  //uppdaterar lastFed till AKTUELL TID
-  //disablear mata-knappen
+  //MATA-KNAPPEN-FUNKTIONALITET: uppdaterar isFed till TRUE + uppdaterar lastFed till AKTUELL TID
   animalsState.feedAnimal = (id: number) => {
     let animals = [...animalsState.animals];
 
