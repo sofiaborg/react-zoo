@@ -44,9 +44,7 @@ export const AnimalDetails = () => {
       <button onClick={() => animal.feedAnimal(singleAnimal.id)}>
         Mata {singleAnimal.name}
       </button>
-      <p>
-        {singleAnimal.name} matades senast {singleAnimal.lastFed}
-      </p>
+      <p>{singleAnimal.lastFed}</p>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 export interface IAnimals {
   id: number;
   name: string;
