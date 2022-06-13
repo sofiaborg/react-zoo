@@ -1,9 +1,10 @@
+import { StyledParagraphs } from "../styledComponents/StyledParagraphs";
 import { FooterWrapper } from "../styledComponents/StyledWrappers";
 
 export const Footer = () => {
   return (
     <FooterWrapper>
-      <h1>footer</h1>
+      <StyledParagraphs>project by Sofia Borg</StyledParagraphs>
     </FooterWrapper>
   );
 };

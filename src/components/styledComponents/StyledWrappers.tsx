@@ -5,7 +5,6 @@ export const BGWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
 
   @media screen and (min-width: 640px) {
   }
@@ -24,10 +23,12 @@ export const ContentWrapper = styled.div`
   padding: 10px;
   @media screen and (min-width: 640px) {
     width: 570px;
+    height: 550px;
   }
 
   @media screen and (min-width: 1024px) {
     width: 570px;
+    height: 550px;
   }
 `;
 

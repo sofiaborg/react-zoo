@@ -4,6 +4,18 @@ import { AnimalContext } from "../../contexts/AnimalContext";
 import { IAnimals } from "../../models/IAnimals";
 import { LS_animal } from "../../services/AnimalService";
 
+//styles
+import {
+  BGWrapper,
+  ContentWrapper,
+  ImageWrapper,
+} from "../styledComponents/StyledWrappers";
+import { StyledImage } from "../styledComponents/StyledImages";
+import { StyledHeadings } from "../styledComponents/StyledHeadings";
+import { StyledParagraphs } from "../styledComponents/StyledParagraphs";
+import { StyledButton } from "../styledComponents/StyledButton";
+
+//component
 export const AnimalDetails = () => {
   const animal = useContext(AnimalContext);
 
@@ -32,22 +44,35 @@ export const AnimalDetails = () => {
   }, []);
 
   return (
-    <div>
-      <Link to="/">Tillbaka till alla djur</Link>
-      <p>Namn: {singleAnimal.name}</p>
-      <p>Född år: {singleAnimal.yearOfBirth}</p>
-      <img src={singleAnimal.imageUrl} alt={singleAnimal.name} />
-      <p>Om Frille: {singleAnimal.shortDescription}</p>
-      <p>Om rasen: {singleAnimal.longDescription}</p>
-      <button
-        onClick={() => animal.feedAnimal(singleAnimal.id)}
-        disabled={singleAnimal.isFed}
-      >
-        Mata {singleAnimal.name}
-      </button>
-      <p>
-        {singleAnimal.name} fick sin mat {singleAnimal.lastFed}
-      </p>
-    </div>
+    <BGWrapper>
+      <ContentWrapper>
+        <Link to="/">Tillbaka till alla djur</Link>
+
+        <StyledHeadings> Namn: {singleAnimal.name}</StyledHeadings>
+
+        <p>Född år: {singleAnimal.yearOfBirth}</p>
+        <ImageWrapper>
+          <StyledImage
+            src={singleAnimal.imageUrl}
+            alt={singleAnimal.name}
+          ></StyledImage>
+        </ImageWrapper>
+        <StyledParagraphs>Om: {singleAnimal.shortDescription}</StyledParagraphs>
+
+        <StyledParagraphs>
+          Om rasen: {singleAnimal.longDescription}
+        </StyledParagraphs>
+
+        <StyledButton
+          onClick={() => animal.feedAnimal(singleAnimal.id)}
+          disabled={singleAnimal.isFed}
+        >
+          Mata {singleAnimal.name}
+        </StyledButton>
+        <p>
+          {singleAnimal.name} fick sin mat {singleAnimal.lastFed}
+        </p>
+      </ContentWrapper>
+    </BGWrapper>
   );
 };

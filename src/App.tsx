@@ -10,6 +10,7 @@ import {
   AnimalContext,
 } from ".././src/contexts/AnimalContext";
 import { LS_animals } from "./services/AnimalService";
+import { NotFound } from "./components/NotFound";
 
 export const App = () => {
   const [animalsState, setAnimalsState] =
@@ -48,17 +49,16 @@ export const App = () => {
   };
 
   return (
-    <div>
-      <AnimalContext.Provider value={animalsState}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Animals />}></Route>
-              <Route path="/:id" element={<AnimalDetails />}></Route>
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </AnimalContext.Provider>
-    </div>
+    <AnimalContext.Provider value={animalsState}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Animals />}></Route>
+            <Route path="/:id" element={<AnimalDetails />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AnimalContext.Provider>
   );
 };

@@ -1,13 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimalContext } from "../../contexts/AnimalContext";
-import { BGWrapper } from "../styledComponents/StyledWrappers";
-import { ContentWrapper } from "../styledComponents/StyledWrappers";
-import { AnimalWrapper } from "../styledComponents/StyledWrappers";
-import { ImageWrapper } from "../styledComponents/StyledWrappers";
-import { InfoWrapper } from "../styledComponents/StyledWrappers";
+
+//styles
+import {
+  BGWrapper,
+  ContentWrapper,
+  AnimalWrapper,
+  ImageWrapper,
+  InfoWrapper,
+} from "../styledComponents/StyledWrappers";
+
 import { StyledImage } from "../styledComponents/StyledImages";
 
+import { StyledButton } from "../styledComponents/StyledButton";
+import { StyledHeadings } from "../styledComponents/StyledHeadings";
+import { StyledParagraphs } from "../styledComponents/StyledParagraphs";
+
+//component
 export const Animals = () => {
   const animals = useContext(AnimalContext);
 
@@ -18,16 +28,19 @@ export const Animals = () => {
           {animals.animals.map((animal) => {
             return (
               <div>
-                <p>{animal.name}</p>
+                <StyledHeadings>{animal.name}</StyledHeadings>
+
                 <ImageWrapper>
                   <StyledImage
                     src={animal.imageUrl}
                     alt={animal.name}
                   ></StyledImage>
                 </ImageWrapper>
-                <InfoWrapper>{animal.shortDescription}</InfoWrapper>
+                <InfoWrapper>
+                  <StyledParagraphs>{animal.shortDescription}</StyledParagraphs>
+                </InfoWrapper>
                 <Link to={"/" + animal.id} key={animal.id}>
-                  <button>Läs mer om {animal.name}</button>
+                  <StyledButton>Läs mer om {animal.name}</StyledButton>
                 </Link>
               </div>
             );
