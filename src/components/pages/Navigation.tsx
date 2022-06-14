@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  StyledNavigation,
+  StyledLink,
+} from "../styledComponents/StyledNavigation";
 
 export const Navigation = () => {
   return (
-    <div>
-      <h1>ZOO</h1>
-      <Link to="/">start</Link>
-    </div>
+    <StyledNavigation>
+      <StyledLink to="/">Zofias Zoo</StyledLink>
+    </StyledNavigation>
   );
 };

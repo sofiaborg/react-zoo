@@ -8,6 +8,8 @@ export const StyledH1 = styled.h1`
 
 export const StyledH5 = styled.h5`
   font-size: 14pt;
+  margin: 0px;
+  padding: 0px;
 `;
 
 export const StyledParagraphs = styled.p`

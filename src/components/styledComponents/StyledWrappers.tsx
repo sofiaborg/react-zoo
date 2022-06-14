@@ -57,12 +57,12 @@ export const AnimalWrapper = styled.div`
 
   @media screen and (min-width: 640px) {
     width: 200px;
-    min-height: 540px;
+    min-height: 500px;
   }
 
   @media screen and (min-width: 1024px) {
     width: 200px;
-    min-height: 540px;
+    min-height: 50px;
   }
 `;
 

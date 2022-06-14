@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { AnimalContext } from "../../contexts/AnimalContext";
 import { IAnimals } from "../../models/IAnimals";
 import { LS_animal } from "../../services/AnimalService";
+import { Link } from "react-router-dom";
 
 //styles
 import {
@@ -89,6 +90,7 @@ export const AnimalDetails = () => {
             {singleAnimal.name} fick sin mat{" "}
             {new Date(singleAnimal.lastFed).toLocaleString()}
           </StyledParagraphs>
+          <Link to="/">Tillbaka</Link>
         </SingleAnimalWrapper>
       </ContentWrapper>
     </Wrapper>
