@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
-export const BGWrapper = styled.div`
+interface IFlexDivProps {
+  dir?: string;
+  align?: string;
+  justify?: string;
+  wrap?: string;
+}
+
+export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  justify-content: ${(props: IFlexDivProps) => props.justify || "center"};
+  align-items: ${(props: IFlexDivProps) => props.align || "center"};
 
   @media screen and (min-width: 640px) {
   }
@@ -15,69 +22,63 @@ export const BGWrapper = styled.div`
 
 export const ContentWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background-color: whitesmoke;
+  padding: 20px;
   width: 370px;
-  padding: 10px;
+  background-color: #f5f5f570;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 5px;
+  flex-wrap: ${(props: IFlexDivProps) => props.wrap || "wrap"};
+  justify-content: ${(props: IFlexDivProps) => props.justify || "center"};
+  align-items: ${(props: IFlexDivProps) => props.align || "center"};
+
   @media screen and (min-width: 640px) {
     width: 570px;
     height: 550px;
+    overflow-y: scroll;
   }
 
   @media screen and (min-width: 1024px) {
     width: 570px;
     height: 550px;
+
+    overflow-y: scroll;
   }
 `;
 
 export const AnimalWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding-top: 40px;
-  gap: 30px;
+  padding: 30px;
+  gap: 40px;
   width: 300px;
 
-  @media screen and (min-width: 650px) {
-    width: 600px;
-    height: 500px;
-    overflow-y: scroll;
+  flex-direction: ${(props: IFlexDivProps) => props.dir || "column"};
+  justify-content: ${(props: IFlexDivProps) => props.justify || "center"};
+  align-items: ${(props: IFlexDivProps) => props.align || "center"};
+
+  @media screen and (min-width: 640px) {
+    width: 200px;
+    min-height: 540px;
   }
+
   @media screen and (min-width: 1024px) {
-    width: 700px;
-    height: 500px;
-    overflow-y: scroll;
+    width: 200px;
+    min-height: 540px;
   }
 `;
 
-export const ImageWrapper = styled.div`
+export const SingleAnimalWrapper = styled.div`
+  display: flex;
+  gap: 20px;
   width: 300px;
-  @media screen and (min-width: 650px) {
-    width: 250px;
+  flex-direction: ${(props: IFlexDivProps) => props.dir || "column"};
+  justify-content: ${(props: IFlexDivProps) => props.justify || "center"};
+  align-items: ${(props: IFlexDivProps) => props.align || "center"};
+
+  @media screen and (min-width: 640px) {
+    width: 500px;
   }
+
   @media screen and (min-width: 1024px) {
-    width: 250px;
+    width: 500px;
   }
-`;
-
-export const InfoWrapper = styled.p`
-  width: 300px;
-  font-size: 10pt;
-  @media screen and (min-width: 650px) {
-    width: 250px;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 250px;
-  }
-`;
-
-export const NavigationWrapper = styled.div`
-  width: 100%;
-`;
-
-export const FooterWrapper = styled.div`
-  width: 100%;
 `;

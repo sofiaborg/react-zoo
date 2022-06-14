@@ -1,52 +1,52 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AnimalContext } from "../../contexts/AnimalContext";
 
 //styles
 import {
-  BGWrapper,
+  Wrapper,
   ContentWrapper,
   AnimalWrapper,
-  ImageWrapper,
-  InfoWrapper,
 } from "../styledComponents/StyledWrappers";
 
-import { StyledImage } from "../styledComponents/StyledImages";
-
 import { StyledButton } from "../styledComponents/StyledButton";
-import { StyledHeadings } from "../styledComponents/StyledHeadings";
-import { StyledParagraphs } from "../styledComponents/StyledParagraphs";
+import { StyledImage, ImageWrapper } from "../styledComponents/StyledImages";
+import { StyledH1, StyledParagraphs } from "../styledComponents/StyledText";
+const errorImg = require("../../assets/onError.jpg");
 
 //component
 export const Animals = () => {
   const animals = useContext(AnimalContext);
 
-  return (
-    <BGWrapper>
-      <ContentWrapper>
-        <AnimalWrapper>
-          {animals.animals.map((animal) => {
-            return (
-              <div>
-                <StyledHeadings>{animal.name}</StyledHeadings>
+  const handleError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = errorImg;
+  };
 
-                <ImageWrapper>
-                  <StyledImage
-                    src={animal.imageUrl}
-                    alt={animal.name}
-                  ></StyledImage>
-                </ImageWrapper>
-                <InfoWrapper>
-                  <StyledParagraphs>{animal.shortDescription}</StyledParagraphs>
-                </InfoWrapper>
-                <Link to={"/" + animal.id} key={animal.id}>
-                  <StyledButton>Läs mer om {animal.name}</StyledButton>
-                </Link>
-              </div>
-            );
-          })}
-        </AnimalWrapper>
+  return (
+    <Wrapper>
+      <ContentWrapper>
+        {animals.animals.map((animal) => {
+          return (
+            <AnimalWrapper>
+              <StyledH1>{animal.name}</StyledH1>
+              <ImageWrapper>
+                <StyledImage
+                  src={animal.imageUrl}
+                  alt={animal.name}
+                  onError={handleError}
+                ></StyledImage>
+              </ImageWrapper>
+              <StyledParagraphs>{animal.shortDescription}</StyledParagraphs>
+
+              <Link to={"/animals/" + animal.id} key={animal.id}>
+                <StyledButton>Läs mer om {animal.name}</StyledButton>
+              </Link>
+            </AnimalWrapper>
+          );
+        })}
       </ContentWrapper>
-    </BGWrapper>
+    </Wrapper>
   );
 };

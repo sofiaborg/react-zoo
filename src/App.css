@@ -1,9 +1,13 @@
 * {
   margin: 0px;
+  font-family: "Roboto", sans-serif;
 }
 
 #root {
-  background-color: rgba(62, 76, 70, 0.581);
+  background-image: url("./assets//background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
   margin: 0px;
   width: 100%;
   min-height: 100vh;

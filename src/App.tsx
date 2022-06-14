@@ -19,6 +19,8 @@ export const App = () => {
   //om det finns "animals" i ls, sätt den listan i state...
   //...annars, hämta listan från APIt och sätt den i state
   useEffect(() => {
+    console.log("Sätt context");
+
     const animalStorage = localStorage.getItem(LS_animals);
     if (animalStorage) {
       setAnimalsState(JSON.parse(animalStorage));
@@ -42,7 +44,7 @@ export const App = () => {
     animals[animals.findIndex((a) => a.id === id)].isFed = true;
 
     animals[animals.findIndex((a) => a.id === id)].lastFed =
-      Date.now().toString();
+      new Date().toString();
 
     setAnimalsState({ ...animalsState, animals: animals });
     localStorage.setItem(LS_animals, JSON.stringify(animals));
@@ -54,7 +56,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Animals />}></Route>
-            <Route path="/:id" element={<AnimalDetails />}></Route>
+            <Route path="animals/:id" element={<AnimalDetails />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Route>
         </Routes>

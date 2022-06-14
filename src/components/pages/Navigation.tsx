@@ -1,10 +1,11 @@
 import React from "react";
-import { NavigationWrapper } from "../styledComponents/StyledWrappers";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   return (
-    <NavigationWrapper>
+    <div>
       <h1>ZOO</h1>
-    </NavigationWrapper>
+      <Link to="/">start</Link>
+    </div>
   );
 };
