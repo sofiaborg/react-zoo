@@ -82,7 +82,6 @@ export const AnimalDetails = () => {
           <StyledButton
             onClick={() => animal.feedAnimal(singleAnimal.id)}
             disabled={singleAnimal.isFed}
-            //om isFed=true, sätt classen xxx
           >
             Mata {singleAnimal.name}
           </StyledButton>
