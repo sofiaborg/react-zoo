@@ -1,23 +1,33 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AnimalContext } from "../../contexts/AnimalContext";
 import { IAnimals } from "../../models/IAnimals";
 import { LS_animal } from "../../services/AnimalService";
 
 //styles
 import {
-  BGWrapper,
+  Wrapper,
   ContentWrapper,
-  ImageWrapper,
+  SingleAnimalWrapper,
 } from "../styledComponents/StyledWrappers";
-import { StyledImage } from "../styledComponents/StyledImages";
-import { StyledHeadings } from "../styledComponents/StyledHeadings";
-import { StyledParagraphs } from "../styledComponents/StyledParagraphs";
 import { StyledButton } from "../styledComponents/StyledButton";
+import { StyledImage, ImageWrapper } from "../styledComponents/StyledImages";
+import {
+  StyledH1,
+  StyledH5,
+  StyledParagraphs,
+} from "../styledComponents/StyledText";
+const errorImg = require("../../assets/onError.jpg");
 
 //component
 export const AnimalDetails = () => {
   const animal = useContext(AnimalContext);
+
+  const handleError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = errorImg;
+  };
 
   const [singleAnimal, setSingleAnimal] = useState<IAnimals>({
     id: 0,
@@ -41,38 +51,46 @@ export const AnimalDetails = () => {
         }
       }
     }
-  }, []);
+  }, [animal.animals]);
 
   return (
-    <BGWrapper>
+    <Wrapper>
       <ContentWrapper>
-        <Link to="/">Tillbaka till alla djur</Link>
+        <SingleAnimalWrapper>
+          <StyledH1> {singleAnimal.name}</StyledH1>
 
-        <StyledHeadings> Namn: {singleAnimal.name}</StyledHeadings>
+          <StyledParagraphs>
+            Född år: {singleAnimal.yearOfBirth}
+          </StyledParagraphs>
 
-        <p>Född år: {singleAnimal.yearOfBirth}</p>
-        <ImageWrapper>
-          <StyledImage
-            src={singleAnimal.imageUrl}
-            alt={singleAnimal.name}
-          ></StyledImage>
-        </ImageWrapper>
-        <StyledParagraphs>Om: {singleAnimal.shortDescription}</StyledParagraphs>
+          <ImageWrapper>
+            <StyledImage
+              src={singleAnimal.imageUrl}
+              alt={singleAnimal.name}
+              onError={handleError}
+            ></StyledImage>
+          </ImageWrapper>
+          <StyledH5>Det här är {singleAnimal.name}</StyledH5>
+          <StyledParagraphs>{singleAnimal.shortDescription}</StyledParagraphs>
 
-        <StyledParagraphs>
-          Om rasen: {singleAnimal.longDescription}
-        </StyledParagraphs>
+          <StyledH5>Fakta om rasen</StyledH5>
+          <StyledParagraphs>
+            Om rasen: {singleAnimal.longDescription}
+          </StyledParagraphs>
 
-        <StyledButton
-          onClick={() => animal.feedAnimal(singleAnimal.id)}
-          disabled={singleAnimal.isFed}
-        >
-          Mata {singleAnimal.name}
-        </StyledButton>
-        <p>
-          {singleAnimal.name} fick sin mat {singleAnimal.lastFed}
-        </p>
+          <StyledButton
+            onClick={() => animal.feedAnimal(singleAnimal.id)}
+            disabled={singleAnimal.isFed}
+            //om isFed=true, sätt classen xxx
+          >
+            Mata {singleAnimal.name}
+          </StyledButton>
+          <StyledParagraphs>
+            {singleAnimal.name} fick sin mat{" "}
+            {new Date(singleAnimal.lastFed).toLocaleString()}
+          </StyledParagraphs>
+        </SingleAnimalWrapper>
       </ContentWrapper>
-    </BGWrapper>
+    </Wrapper>
   );
 };
