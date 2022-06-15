@@ -9,12 +9,12 @@ export const StyledNavigation = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  font-size: 30pt;
+  font-family: "Potta One", cursive;
+  font-size: 40pt;
   text-decoration: none;
   color: whitesmoke;
   padding: 0px;
-  font-family: "century gothic";
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 `;
 
 export const StyledAlink = styled(StyledLink)`

@@ -7,7 +7,7 @@ import {
 export const Navigation = () => {
   return (
     <StyledNavigation>
-      <StyledLink to="/">Zofias Zoo</StyledLink>
+      <StyledLink to="/">Zoospelet</StyledLink>
     </StyledNavigation>
   );
 };

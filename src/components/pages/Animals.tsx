@@ -9,8 +9,7 @@ import {
   AnimalWrapper,
 } from "../styledComponents/StyledWrappers";
 
-import { StyledButton } from "../styledComponents/StyledButton";
-import { StyledImage, ImageWrapper } from "../styledComponents/StyledImages";
+import { ShakyImage, ImageWrapper } from "../styledComponents/StyledImages";
 import { StyledH1, StyledParagraphs } from "../styledComponents/StyledText";
 const errorImg = require("../../assets/onError.jpg");
 
@@ -29,20 +28,18 @@ export const Animals = () => {
       <ContentWrapper>
         {animals.animals.map((animal) => {
           return (
-            <AnimalWrapper>
+            <AnimalWrapper key={animal.id}>
               <StyledH1>{animal.name}</StyledH1>
               <ImageWrapper>
-                <StyledImage
-                  src={animal.imageUrl}
-                  alt={animal.name}
-                  onError={handleError}
-                ></StyledImage>
+                <Link to={"/animals/" + animal.id}>
+                  <ShakyImage
+                    src={animal.imageUrl}
+                    alt={animal.name}
+                    onError={handleError}
+                  ></ShakyImage>
+                </Link>
               </ImageWrapper>
               <StyledParagraphs>{animal.shortDescription}</StyledParagraphs>
-
-              <Link to={"/animals/" + animal.id} key={animal.id}>
-                <StyledButton>Läs mer om {animal.name}</StyledButton>
-              </Link>
             </AnimalWrapper>
           );
         })}

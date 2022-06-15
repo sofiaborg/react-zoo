@@ -12,6 +12,7 @@ import {
 import { LS_animals } from "./services/AnimalService";
 import { NotFound } from "./components/NotFound";
 
+//component
 export const App = () => {
   const [animalsState, setAnimalsState] =
     useState<AnimalInterface>(defaultValue);
@@ -19,8 +20,6 @@ export const App = () => {
   //om det finns "animals" i ls, sätt den listan i state...
   //...annars, hämta listan från APIt och sätt den i state
   useEffect(() => {
-    console.log("Sätt context");
-
     const animalStorage = localStorage.getItem(LS_animals);
     if (animalStorage) {
       setAnimalsState(JSON.parse(animalStorage));

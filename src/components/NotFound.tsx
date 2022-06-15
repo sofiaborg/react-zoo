@@ -1,5 +1,4 @@
 import { Wrapper, ContentWrapper } from "./styledComponents/StyledWrappers";
-import { Link } from "react-router-dom";
 import { StyledH1 } from "./styledComponents/StyledText";
 
 export const NotFound = () => {
