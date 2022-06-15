@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface Disable {
-  isFed: boolean;
-}
-
 export const StyledButton = styled.button`
   align-self: center;
   background-color: #e1e8e3;
@@ -43,6 +39,14 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const StyledDisable = styled.button`
-  color: ${(props: Disable) => (props.isFed ? "none" : "green")};
+export const StyledDisable = styled(StyledButton)`
+  background-color: #98af9e;
+  &:hover {
+    box-shadow: none;
+    transform: none;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
 `;

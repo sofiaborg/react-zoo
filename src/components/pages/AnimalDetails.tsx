@@ -11,8 +11,9 @@ import {
   ContentWrapper,
   SingleAnimalWrapper,
 } from "../styledComponents/StyledWrappers";
-import { StyledButton } from "../styledComponents/StyledButton";
+import { StyledButton, StyledDisable } from "../styledComponents/StyledButton";
 import { StyledImage, ImageWrapper } from "../styledComponents/StyledImages";
+import { StyledAlink } from "../styledComponents/StyledNavigation";
 import {
   StyledH1,
   StyledH5,
@@ -78,18 +79,21 @@ export const AnimalDetails = () => {
           <StyledParagraphs>
             Om rasen: {singleAnimal.longDescription}
           </StyledParagraphs>
+          {singleAnimal.isFed ? (
+            <StyledDisable disabled={singleAnimal.isFed}>
+              {singleAnimal.name} är mätt!
+            </StyledDisable>
+          ) : (
+            <StyledButton onClick={() => animal.feedAnimal(singleAnimal.id)}>
+              Mata {singleAnimal.name}
+            </StyledButton>
+          )}
 
-          <StyledButton
-            onClick={() => animal.feedAnimal(singleAnimal.id)}
-            disabled={singleAnimal.isFed}
-          >
-            Mata {singleAnimal.name}
-          </StyledButton>
           <StyledParagraphs>
             {singleAnimal.name} fick sin mat{" "}
             {new Date(singleAnimal.lastFed).toLocaleString()}
           </StyledParagraphs>
-          <Link to="/">Tillbaka</Link>
+          <StyledAlink to="/">Tillbaka</StyledAlink>
         </SingleAnimalWrapper>
       </ContentWrapper>
     </Wrapper>

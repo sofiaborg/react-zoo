@@ -16,3 +16,12 @@ export const StyledLink = styled(Link)`
   font-family: "century gothic";
   padding-bottom: 20px;
 `;
+
+export const StyledAlink = styled(StyledLink)`
+  font-size: 9pt;
+  padding-bottom: 5px;
+  color: #403c3c;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
