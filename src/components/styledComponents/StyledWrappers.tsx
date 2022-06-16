@@ -40,7 +40,6 @@ export const ContentWrapper = styled.div`
   @media screen and (min-width: 1024px) {
     width: 570px;
     height: 550px;
-
     overflow-y: scroll;
   }
 `;
