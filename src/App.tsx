@@ -49,6 +49,23 @@ export const App = () => {
     localStorage.setItem(LS_animals, JSON.stringify(animals));
   };
 
+  //uppdatera isFed till false om det gått 3 h
+  animalsState.updateFed = (id: number) => {
+    let animal =
+      animalsState.animals[animalsState.animals.findIndex((a) => a.id === id)];
+
+    let difference =
+      (Date.now() - new Date(animal.lastFed).getTime()) / 3600000;
+    if (difference > 3) {
+      animal.isFed = false;
+    }
+
+    console.log([...animalsState.animals]);
+
+    setAnimalsState({ ...animalsState, animals: [...animalsState.animals] });
+    localStorage.setItem(LS_animals, JSON.stringify(animalsState));
+  };
+
   return (
     <AnimalContext.Provider value={animalsState}>
       <BrowserRouter>

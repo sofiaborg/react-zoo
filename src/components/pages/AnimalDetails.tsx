@@ -45,6 +45,12 @@ export const AnimalDetails = () => {
   const params = useParams();
 
   useEffect(() => {
+    if (singleAnimal.id === 0) return;
+
+    animal.updateFed(singleAnimal.id);
+  }, [singleAnimal]);
+
+  useEffect(() => {
     if (params.id) {
       for (let i = 0; i < animal.animals.length; i++) {
         if (animal.animals[i].id === parseInt(params.id)) {
